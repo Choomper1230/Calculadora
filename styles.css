@@ -1,0 +1,99 @@
+:root{
+    --borde-radio: 16px 0px;
+}
+
+html{
+    box-sizing: border-box;
+    height: 100%;
+}
+*,
+*::before,
+*::after{
+    box-sizing: inherit;
+    margin: 0;
+    padding: 0;
+}
+body{
+    align-items: center;
+    background: linear-gradient(320deg, orange,yellow,red);
+    display: flex;
+    font-family: 'Dosis', sans-serif;
+    font-display: swap;
+    height: inherit;
+    justify-content: center;
+}
+.padre{
+    border-radius: 16px;
+    box-shadow: 0 10px 100px rgb(0, 0, 0);
+    color: black;
+    background: rgba(255, 255, 255, 0.3);
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: var(--borde-radio);
+    height: 540px;
+    padding: 20px 35px; 
+}
+.pantalla{
+    background: rgb(255, 255, 255);
+    border: 2px solid black;
+    border-radius: var(--borde-radio);
+    box-shadow: 0 4px 30px rgba(35, 35, 35, 0.5);
+    color: black;
+    font-size: 35px;
+    overflow: auto;
+    padding: 20px;
+    text-align: right;
+    width: 326px;
+}
+.boton-fila{
+    display: flex;
+    justify-content: space-between;
+    margin: 5% 0;
+}
+.boton{
+    background: rgba(255,255,255);
+    border: 1px solid rgb(0, 0, 0);
+    border-radius: var(--borde-radio);
+    box-shadow: 3px 4px 5px rgba(0, 0, 0, 0.5);
+    color: black;
+    flex-basis: 15%;
+    font-family: inherit;
+    font-size: 24px;
+    height: 65px;
+    transition: .5s;
+}
+.boton:nth-child(4n + 5){
+    color: white;
+    background-color: black;
+}
+.boton:hover{
+    background-color: inherit;
+    transition: .5s;
+    transform: scale(1.15);
+    color: inherit;
+    cursor: pointer;
+}
+.boton:active{    
+    background-color: greenyellow;
+}
+.doble{
+    flex-basis: 36%;
+}
+.triple{
+    flex-basis: 58%;
+}
+.colorC{
+    background-color: red;
+    color: white;
+}
+.colorI{
+    background-color: blue;
+    color: white;
+}
+.colorF{
+    background-color: grey;
+    color: white;
+}
+.colorD{
+    background-color: black;
+    color: white;
+}
