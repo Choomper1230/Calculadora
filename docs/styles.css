@@ -15,7 +15,7 @@ html{
 }
 body{
     align-items: center;
-    background: linear-gradient(320deg, orange,yellow,red);
+    background: linear-gradient(320deg, white,grey,black);
     display: flex;
     font-family: 'Dosis', sans-serif;
     font-display: swap;
@@ -90,10 +90,66 @@ body{
     color: white;
 }
 .colorF{
-    background-color: grey;
+    background-color: orange;
     color: white;
 }
 .colorD{
     background-color: black;
     color: white;
+}
+@media (max-width: 700px){
+    .padre{
+        height: 500px;
+    }
+    .pantalla{
+        width: 280px;
+    }
+    .boton{
+        height: 60px;
+    }
+}
+@media (max-width: 550px){
+    .padre{
+        height: 400px;
+    }
+    .pantalla{
+        width: 240px;
+        height: 70px;
+        font-size: 22px;
+        padding: 14px;
+    }
+    .boton{
+        height: 45px;
+        font-size: 18px;
+    }
+}
+@media (max-width: 400px){
+    .padre{
+        height: 350px;
+    }
+    .pantalla{
+        width: 200px;
+        height: 55px;
+        padding: 12px;
+        font-size: 20px;
+    }
+    .boton{
+        height: 40px;
+        font-size: 17px;
+    }
+}
+@media (max-width: 320px){
+    .padre{
+        height: 300px;
+    }
+    .pantalla{
+        width: 150px;
+        height: 45px;
+        font-size: 18px;
+        padding: 10px;
+    }
+    .boton{
+        height: 35px;
+        font-size: 15px;
+    }
 }
