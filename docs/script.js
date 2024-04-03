@@ -1,6 +1,18 @@
 let Total = 0;
 let aumento = "0";
 let anteriorOperador;
+const colorUno = document.querySelector(".color1");
+const colorDos = document.querySelector(".color2");
+const colorTres = document.querySelector(".color3");
+const colorFondo = document.documentElement.style;
+const botonAct = document.querySelector("#actualizar")
+
+botonAct.addEventListener('click', () => {
+    colorFondo.setProperty("--colorUno", colorUno.value)
+    colorFondo.setProperty("--colorDos", colorDos.value)
+    colorFondo.setProperty("--colorTres", colorTres.value)
+})
+
 
 const pantalla = document.querySelector('.pantalla');
 
