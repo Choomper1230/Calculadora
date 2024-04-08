@@ -4,11 +4,14 @@ let Total = 0;
 let aumento = "0";
 let anteriorOperador;
 let romper = 0;
+let unoColor = false;
+let dosColor = false;
+let tresColor = true;
 const colorUno = document.querySelector(".color1");
 const colorDos = document.querySelector(".color2");
 const colorTres = document.querySelector(".color3");
 const root = document.documentElement.style;
-const botonAct = document.querySelector("#actualizar")
+const html = document;
 const menu = document.querySelector(".menu")
 const botonMenu = document.querySelector("#siguiente")
 const botonAtras = document.querySelector("#atras")
@@ -17,6 +20,9 @@ const difuminado = document.querySelector(".difuminado")
 const grados = document.querySelector("#grados")
 const opcionColor = document.querySelector('.boton-padre')
 const opcionGrados = document.querySelector('.grados')
+const nColorUno = document.querySelector('#n-colorUno')
+const nColorDos = document.querySelector('#n-colorDos')
+const nColorTres = document.querySelector('#n-colorTres')
 
 //Botones de Menu
 
@@ -49,16 +55,122 @@ grados.addEventListener('input', () => {
     root.setProperty("--grados", grados.value + "deg")
 })
 
+//#Colores
+
+nColorUno.addEventListener('click', () => {
+    desaparecerColor()
+    colorUno.style.display = ""
+    colorUno.style.width = "175px"
+    opcionGrados.style.display = "none"
+    body.style.background = "var(--backgroundUno)"
+    unoColor = true
+    dosColor = false
+    tresColor = false
+    cambiarColorBorde(colorUno)
+})
+nColorDos.addEventListener('click', () => {
+    desaparecerColor()
+    colorUno.style.display = ""
+    colorDos.style.display = ""
+    colorUno.style.width = "80px"
+    colorDos.style.width = "80px"
+    opcionGrados.style.display = ""
+    body.style.background = "var(--backgroundDos)"
+    unoColor = false
+    dosColor = true
+    tresColor = false
+    cambiarColorBordeDos(colorUno,colorDos)
+})
+nColorTres.addEventListener('click', () => {
+    reaparecerColor()
+    colorUno.style.width = "50px"
+    colorDos.style.width = "50px"
+    colorTres.style.width = "50px"
+    opcionGrados.style.display = ""
+    body.style.background = "var(--backgroundTres)"
+    unoColor = false
+    dosColor = false
+    tresColor = true
+    cambiarColorBorde(colorDos)
+})
+function desaparecerColor() {
+    colorUno.style.display = "none"
+    colorDos.style.display = "none"
+    colorTres.style.display = "none"
+}
+function reaparecerColor() {
+    colorUno.style.display = ""
+    colorDos.style.display = ""
+    colorTres.style.display = ""
+}
+
 //Color Picker
 
 colorUno.addEventListener('input', () =>{
     root.setProperty("--colorUno", colorUno.value)
+    if (unoColor) {
+        cambiarColorBorde(colorUno)
+    }
+    if (dosColor) {
+        cambiarColorBordeDos(colorUno,colorDos)
+    }
 })
 
 colorDos.addEventListener('input', () =>{
     root.setProperty("--colorDos", colorDos.value)
-    
-    let valor = colorDos.value;
+    if (dosColor) {
+        cambiarColorBordeDos(colorUno,colorDos)
+    }
+    if (tresColor) {
+        cambiarColorBorde(colorDos)
+    }
+})
+
+colorTres.addEventListener('input', () =>{
+    root.setProperty("--colorTres", colorTres.value)
+})
+
+function cambiarColorBordeDos(x,y) {
+    let valorUno = x.value;
+    let valorDos = y.value
+    let romperDos = false;
+
+        for (let i of valorUno) {
+            if (i < 6) {
+                romper--
+                for (let i of valorDos) {
+                    if (i < 6) {
+                        root.setProperty("--colorBorde", "white")
+                        romperDos = true;
+                        break;
+                    }else{
+                    romper++;
+                    if (romper > 1) {
+                        root.setProperty("--colorBorde", "black")
+                        break;
+                        }
+                    }
+                }
+            }else{
+                romper++;
+                if (romper > 1) {
+                    root.setProperty("--colorBorde", "black")
+                    break;
+                }
+            }
+            if (romper > 1) {
+                root.setProperty("--colorBorde", "black")
+                break;
+            }
+            if (romperDos) {
+                break;
+            }
+        }
+    romper = 0;
+    }
+
+function cambiarColorBorde(x) {
+    let valor = x.value;
 
         for (let i of valor) {
             if (i < 6) {
@@ -74,11 +186,7 @@ colorDos.addEventListener('input', () =>{
             }
         }
     romper = 0;
-})
-
-colorTres.addEventListener('input', () =>{
-    root.setProperty("--colorTres", colorTres.value)
-})
+}
 
 //Funcionamiento de Calculadora
 

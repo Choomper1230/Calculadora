@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body id="body">
+
+<!--Calculadora-->
+
     <div class="padre">
         <section class="pantalla">
             0
@@ -87,6 +90,9 @@
             </div>
         </section>
     </div>
+
+<!--Menu-->
+
     <div class="btn-menu" id="siguiente">
         <img src="Img/menu.png" alt="Menu" >
     </div>
@@ -95,16 +101,31 @@
     </div>
     <div class="difuminado">
     </div>
+
+<!--ColorPicker-->
+
     <div class="menu">
         <div class="boton-padre">
             <h1 id="btn-text">Color De Fondo</h1>
-            <input type="color" value = "#ffffff" id="btn-color" class="color1">
-            <input type="color" value = "#808080" id="btn-color" class="color2">
-            <input type="color" id="btn-color" class="color3">
+            <input type="color" value = "#0000ff" id="btn-color" class="color1">
+            <input type="color" value = "#ff0000" id="btn-color" class="color2">
+            <input type="color" value="#00ff00" id="btn-color" class="color3">
         </div>
+
+<!--Grados-->
+
         <div class="grados">
             <h1 id="btn-text">Rotacion de Colores</h1>
             <input type="range" id="grados" min="0" max="360" value="320">
+        </div>
+
+<!--#Colores-->
+
+        <div class="n-colores">
+            <h1 id="btn-text">Cantidad de Colores</h1>
+            <input type="radio" class="n-color" id="n-colorUno" name="colores">
+            <input type="radio" class="n-color" id="n-colorDos" name="colores">
+            <input type="radio" class="n-color" id="n-colorTres" name="colores" checked>
         </div>
     </div>
     <script src="script.js"></script>
