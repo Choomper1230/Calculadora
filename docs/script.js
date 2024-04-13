@@ -2,6 +2,7 @@
 
 let Total = 0;
 let aumento = "0";
+let aumentoArt = '0'
 let anteriorOperador;
 let romper = 0;
 let unoColor = false;
@@ -191,6 +192,8 @@ function cambiarColorBorde(x) {
 //Funcionamiento de Calculadora
 
 const pantalla = document.querySelector('.pantalla');
+const pantallaArt = document.querySelector('.pantallaArtificial');
+
 
 function clickBoton(value){
     if (isNaN(value)) {
@@ -200,12 +203,15 @@ function clickBoton(value){
         unNumero(value);
     }
     pantalla.innerText = aumento;
+    pantallaArt.innerText = aumentoArt;
 }
 function unSimbolo(simbolo) {
     switch (simbolo) {
         case 'C':
             aumento = '0';
+            aumentoArt = '0';
             Total = 0;
+            anteriorOperador = null;
             break;
         case '=':
             if (anteriorOperador === null) {
@@ -214,33 +220,40 @@ function unSimbolo(simbolo) {
             Operacion(parseFloat(aumento));
             anteriorOperador = null;
             aumento = Total;
+            aumentoArt = Total;
             Total = 0;
+            anteriorOperador = null;
             break;
         case '←':
             if (aumento.length === 1) {
                 aumento = '0';
+                aumentoArt = '0';
             }else{
                 aumento = aumento.substring(0, aumento.length - 1);
+                aumentoArt = aumentoArt.substring(0, aumentoArt.length - 1);
             }
+            anteriorOperador = null;
             break;
         case '.':
             aumento = aumento + '.';
+            aumentoArt = aumentoArt + '.';
             break;
-        case '+':
+        case '+': 
         case '−':
         case '×':
         case '÷':
         case '%':
         case '^':
+            matematica(simbolo);
+            aumentoArt += simbolo;
+            break;  
         case '√':
             matematica(simbolo);
-            break;      
+            aumentoArt = simbolo + aumentoArt;
+            break;  
     }
 }
 function matematica(simbolo) {
-    if (aumento === '0') {
-        return;
-    }
     const intAumento = parseFloat(aumento);
     if (Total === 0) {
         Total = intAumento;
@@ -270,8 +283,18 @@ function Operacion(intAumento) {
 function unNumero(numeroString) {
     if (aumento === '0') {
         aumento = numeroString;
+        if (anteriorOperador === '√') {
+            aumentoArt = numeroString + aumentoArt;
+        }else{
+            aumentoArt += numeroString;
+        }
     }else{
         aumento += numeroString;
+        if (anteriorOperador === '√') {
+            aumentoArt = numeroString + aumentoArt;
+        }else{
+            aumentoArt += numeroString;
+        }
     }
 }
 function init() {
